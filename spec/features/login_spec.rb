@@ -6,7 +6,7 @@ RSpec.feature "Logins", type: :feature do
   scenario "ログインに成功しログアウトすること" do
     valid_login(user)
     expect(current_path).to eq root_path
-    expect(page).not_to have_content "ログイン"
+    expect(page).not_to have_content "TABICOとは"
 
     click_link "ログアウト"
 

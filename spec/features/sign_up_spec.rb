@@ -1,21 +1,16 @@
 require 'rails_helper'
 
 RSpec.feature "SignUps", type: :feature do
-  include ActiveJob::TestHelper
+  let!(:user) { FactoryBot.build(:user) }
 
-  scenario "ユーザーはサインアップに成功すること" do
+  scenario "ユーザーは新規登録に成功すること" do
     visit root_path
     click_link "新規登録"
-    perform_enqueued_jobs do
-      expect do
-        fill_in "名前", with: "Example"
-        fill_in "Eメール", with: "test@example.com"
-        fill_in "パスワード", with: "test123"
-        fill_in "パスワード(確認)", with: "test123"
-        click_button "新規登録"
-      end.to change(User, :count).by(1)
+    visit new_user_registration_path
+    expect do
+      valid_signup(user)
+    end.to change(User, :count).by(1)
 
-      expect(current_path).to eq root_path
-    end
+    expect(current_path).to eq root_path
   end
 end
