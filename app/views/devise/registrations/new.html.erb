@@ -1,18 +1,25 @@
 <section class="page-section bg-primary-2 mb-0" >
   <div class="container">
+    <% if @user.errors.any? %>
+    <% end %>
     <div class="box1">
       <div class="box-inner">
         <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
         <h1>新規登録</h1>
         <div class="box-name">
           <%= f.label :name, "名前" %><br />
           <%= f.text_field :name, autofocus: true %>
+          <% if @user.errors.include?(:name) %>
+            <p style="color: red;"><%= @user.errors.full_messages_for(:name).first %>
+          <% end %>
         </div>
 
         <div class="box-email">
           <%= f.label :email, "Eメール" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <% if @user.errors.include?(:email) %>
+            <p style="color: red;"><%= @user.errors.full_messages_for(:email).first %>
+          <% end %>
         </div>
 
         <div class="box-password">
@@ -21,11 +28,17 @@
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
           <%= f.password_field :password, autocomplete: "new-password" %>
+          <% if @user.errors.include?(:password) %>
+            <p style="color: red;"><%= @user.errors.full_messages_for(:password).first %>
+          <% end %>
         </div>
 
         <div class="box-password">
           <%= f.label :password_confirmation, "パスワード(確認)" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <% if @user.errors.include?(:password_confirmation) %>
+            <p style="color: red;"><%= @user.errors.full_messages_for(:password_confirmation).first %>
+          <% end %>
         </div>
 
         <div class="box-login">

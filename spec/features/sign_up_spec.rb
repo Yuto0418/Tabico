@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "SignUps", type: :feature do
   include ActiveJob::TestHelper
 
-  scenario "ユーザーはサインアップに成功する" do
+  scenario "ユーザーはサインアップに成功すること" do
     visit root_path
     click_link "新規登録"
     perform_enqueued_jobs do
