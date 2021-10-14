@@ -4,6 +4,7 @@ jobs:
     working_directory: ~/tabico
     docker:
       - image: circleci/ruby
+        command: mysqld --default-authentication-plugin=mysql_native_password
     steps:
       - checkout
       - setup_remote_docker
@@ -17,6 +18,10 @@ jobs:
             set -x
             docker-compose up -d
             docker exec tabico_app curl -4 --retry 10 --retry-delay 3 --retry-connrefused http://localhost:3000
+      - run:
+          name: bundler install
+          command: |
+            gem install bundler
       - run:
           name: Run rspec
           command: docker-compose exec tabico rspec
