@@ -4,6 +4,7 @@ jobs:
     working_directory: ~/tabico
     docker:
       - image: circleci/ruby
+      command: mysqld --default-authentication-plugin=mysql_native_password
     steps:
       - checkout
       - setup_remote_docker
