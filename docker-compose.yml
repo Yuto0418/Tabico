@@ -9,11 +9,15 @@ services:
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: password
+    networks:
+      - default
+    ports:
+      - '33306:3306'
     volumes:
       - mysql_data:/var/lib/mysql
   tabico:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bundle exec rails server -b 0.0.0.0
     environment:
       MYSQL_USERNAME: root
       MYSQL_PASSWORD: password
