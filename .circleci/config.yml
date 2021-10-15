@@ -24,7 +24,7 @@ jobs:
       - run:
           name: Setup database
           command: |
-            docker-compose exec tabico rails db:create db:migrate
+            docker-compose exec tabico bash -c 'yes n | bundle exec rails g db:create --migrate'
       - run:
           name: Run rspec
           command: docker-compose exec tabico rspec
