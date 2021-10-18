@@ -26,10 +26,7 @@ jobs:
           command: |
             docker-compose exec tabico rake db:create
             docker-compose exec tabico rake db:migrate
-      - run:
-          name: yarn Install
-          command: yarn install
-      - run: docker-compose exec tabico bundle exec bin/webpack
+            docker-compose exec tabico bundle exec bin/webpack
       - run:
           name: Run rspec
           command: docker-compose exec tabico rspec
