@@ -22,11 +22,6 @@ jobs:
           command: |
             gem install bundler
       - run:
-          name: Setup database
-          command: |
-            docker-compose exec tabico rails g db:create
-            docker-compose exec tabico rails g db:migrate
-      - run:
           name: Run rspec
           command: docker-compose exec tabico rspec
 
