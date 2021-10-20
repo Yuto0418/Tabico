@@ -69,6 +69,9 @@ jobs:
           name: Identify Heroku app names to destroy
           command: echo 'export APP_NAMES_TO_REMOVE=`heroku apps --json | jq -r "map(select(.owner.email == "\"$MY_EMAIL\"" and (.name | contains(\"tabico\")))) | sort_by(.updated_at) | reverse | .[5:] | .[].name"`' >> $BASH_ENV
       - run:
+          name: Delete old apps if needed
+          command: for app_name in $APP_NAMES_TO_REMOVE; do heroku apps:destroy -a $app_name -c $app_name; done
+      - run:
           name: Define Heroku app name to create
           command: timestamp=`date +%Y%m%d%H%M%S` && echo "export HEROKU_APP_NAME=tabico-$timestamp" >> $BASH_ENV
       - run:
