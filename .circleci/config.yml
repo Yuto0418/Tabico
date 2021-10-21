@@ -18,6 +18,16 @@ jobs:
             docker-compose up -d
             docker exec tabico_app curl -4 --retry 10 --retry-delay 3 --retry-connrefused http://localhost:3000
       - run:
+          name: bundler install
+          command: |
+            gem install bundler
+      - run:
+          name: Setup database
+          command: |
+            docker-compose exec tabico rake db:create
+            docker-compose exec tabico rake db:migrate
+            docker-compose exec tabico rails webpacker:install
+      - run:
           name: Run rspec
           command: docker-compose exec tabico rspec
 
