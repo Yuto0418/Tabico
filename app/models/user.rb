@@ -14,4 +14,6 @@ class User < ApplicationRecord
                        format: { with: VALID_PASSWORD_REGEX, message: "を半角英数字8文字以上で入力して下さい" }
   validates :password, confirmation: true
   validates :password_confirmation, presence: true
+
+  mount_uploader :image_name, ImageUploader
 end
