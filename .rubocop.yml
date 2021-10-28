@@ -6,6 +6,9 @@ inherit_from:
 Rails:
   Enabled: true
 
+LineLength:
+  Max: 120
+  
 # 対象外
 AllCops:
   Exclude:
