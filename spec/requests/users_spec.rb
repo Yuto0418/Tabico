@@ -31,4 +31,22 @@ RSpec.describe "Users", type: :request do
       expect(response).to have_http_status "200"
     end
   end
+
+  describe "GET #show" do
+    it "アカウント設定ページが正常なレスポンスを返すこと" do
+      sign_in_as user
+      get user_path(user)
+      expect(response).to be_successful
+      expect(response).to have_http_status "200"
+    end
+  end
+
+  describe "#update" do
+    it "ユーザーを更新できること" do
+      user_params = FactoryBot.attributes_for(:user, name: "NewName")
+      sign_in_as user
+      patch user_path(user), params: { id: user.id, user: user_params }
+      expect(user.reload.name).to eq "NewName"
+    end
+  end
 end

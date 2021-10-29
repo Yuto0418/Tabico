@@ -3,17 +3,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(current_user.id)
-    if current_user.update(user_params)
+    @user = User.find(params[:id])
+    if @user.update(user_params)
       flash[:notice] = "ユーザーIDが「#{@user.name}」の情報を更新しました"
       redirect_to action: :show
     else
       flash[:notice] = "情報の更新が失敗しました"
-      render :profile
+      render :show
     end
   end
 
