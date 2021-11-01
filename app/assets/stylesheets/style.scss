@@ -11739,3 +11739,21 @@ p.text {
   width: 100%;
   margin: -25px 0 0 0;
 }
+.upload-btn {
+  position: fixed;
+  right: 150px;
+  bottom: 50px;
+  z-index: 99;
+  border-radius: 50%;
+  padding: 20px 10px;
+}
+.btn-success {
+  color: #fff;
+  background-color: #4d59f7;
+  border-color: #4d59f7;
+}
+.btn-success:hover {
+  color: #fff;
+  background-color: #8189f5;
+  border-color: #8189f5;
+}
