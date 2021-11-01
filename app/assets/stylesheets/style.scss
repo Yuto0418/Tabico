@@ -11757,3 +11757,34 @@ p.text {
   background-color: #8189f5;
   border-color: #8189f5;
 }
+
+.new_post {
+  margin: 0 auto;
+  width: 600px;
+  height: 100%;
+  background-color: white;
+  h1 {
+    margin: 0 auto;
+    padding: 40px 0 30px 0;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+.box3 {
+  border-radius: 4px;
+  border: 1px #ddd solid;
+  margin-bottom: 20px;
+}
+.update-content {
+  border-bottom: 1px solid #eaedef;
+  padding: 20px;
+  margin: 0 15px;
+  font-size: 16px;
+}
+.update-content label {
+  font-weight: bold;
+}
+textarea.form-control {
+  height: auto;
+}
