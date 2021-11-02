@@ -75,3 +75,7 @@ gem 'aws-sdk', '~> 3.0'
 gem 'dotenv-rails'
 
 gem 'carrierwave'
+
+gem 'will_paginate'
+
+gem 'bootstrap-will_paginate'
