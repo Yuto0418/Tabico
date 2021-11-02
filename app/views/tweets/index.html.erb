@@ -4,7 +4,7 @@
   </header>
   <main>
     <section>
-      <% @tweets.each do |tweet| %>
+      <% @tweets.reverse.each do |tweet| %>
         <div class="tweet">
           <div class="flex">
             <%= image_tag tweet.user.image_name.to_s ,class: "own" %>

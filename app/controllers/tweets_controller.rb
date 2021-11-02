@@ -18,6 +18,12 @@ class TweetsController < ApplicationController
   def show
     @tweet = Tweet.find(params[:id])
   end
+  def destroy
+    @tweet = Tweet.find(params[:id])
+    @tweet.destroy
+    flash[:notice] = "投稿を削除しました"
+    redirect_to :tweets
+  end
   private
     def tweet_params
       params.require(:tweet).permit(:body, :image, :user_id)
