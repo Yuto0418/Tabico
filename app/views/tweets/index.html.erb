@@ -4,16 +4,22 @@
   </header>
   <main>
     <section>
-      <div class="tweet">
-        <div class="flex">
-          <img src="http://xria.biz/id/templateya/data/kZ3JV7seXd.png" class="own">
-          <h4>テンプレ屋</h4>
-          <p class="date">2020年02月08日</p>
+      <% @tweets.each do |tweet| %>
+        <div class="tweet">
+          <div class="flex">
+            <%= image_tag tweet.user.image_name.to_s ,class: "own" %>
+            <h4><%= tweet.user.name %></h4>
+            <p class="date"><%= tweet.created_at.to_s(:datetime_jp) %></p>
+          </div>
+          <div class="flex contents">
+            <p class="text"><%= tweet.body %></p>
+            <% if tweet.image.to_s.present? %>
+              <%= image_tag tweet.image.to_s ,width: '240px' ,height: '140px' %>
+            <% end %>
+          </div>
+          <%= link_to "コメントする", tweet ,class: "flex contents" %>
         </div>
-        <div class="flex contents">
-          <p class="text">水馬赤いなあいうえお 浮藻に小蝦も泳いでる 柿の木栗の木かきくけこ 啄木鳥こつこつ枯れ欅 大角豆に酢をかけさしすせそ その魚浅瀬で刺しました 立ちましょ喇叭でたちつてと トテトテタッタと飛び立った 蛞蝓のろのろなにぬねの 納戸にぬめってなにねばる 鳩ポッポほろほろはひふへほ 日向のお部屋にゃ笛を吹く 蝸牛ネジ巻まみむめも 梅の実落ちても見もしまい 焼栗茹栗やいゆえよ 山田に灯のつくよいの家 雷鳥は寒かろらりるれろ 蓮花が咲いたら瑠璃の鳥 わいわいわっしょいわゐうゑを 植木屋井戸換えお祭りだ<br>北原白秋「五十音の歌」より</p>
-        </div>
-      </div>
+      <% end %>
     </section>
   </main>
   <%= link_to '/tweets/new', class: 'btn btn-success upload-btn' do %>
