@@ -4,7 +4,7 @@
   </header>
   <main>
     <section>
-      <% @tweets.reverse.each do |tweet| %>
+      <% @tweets.each do |tweet| %>
         <div class="tweet">
           <div class="flex">
             <%= image_tag tweet.user.image_name.to_s ,class: "own" %>
@@ -22,6 +22,7 @@
       <% end %>
     </section>
   </main>
+  <%= paginate @tweets %>
   <%= link_to '/tweets/new', class: 'btn btn-success upload-btn' do %>
     <i class="fas fa-pencil-alt"></i> 投稿
   <% end %>
