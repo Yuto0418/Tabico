@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "Tweets", type: :request do
 
-  let(:user) { FactoryBot.create(:user) }
-  let(:tweet) { FactoryBot.create(:tweet, user: user) }
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:tweet) { FactoryBot.create(:tweet, user: user) }
 
   before do
     sign_in user
@@ -14,6 +14,11 @@ RSpec.describe "Tweets", type: :request do
       get "/tweets/index"
       expect(response).to be_successful
       expect(response).to have_http_status "200"
+    end
+
+    it "投稿一覧画面に投稿が表示されること" do
+      get "/tweets/index"
+      expect(response.body).to include tweet.body
     end
   end
 
