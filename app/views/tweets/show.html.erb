@@ -1,0 +1,31 @@
+<div class="new_post">
+  <h1>投稿内容</h1>
+  <div class="container">
+    <div class="box3">
+      <div class="box-inner">
+        <div class="update-content">
+          <div class="row">
+            <%= @tweet.body %>
+          </div>
+        </div>
+        <% if @tweet.image.to_s.present? %>
+          <div class="update-content">
+            <div class="row">
+                <%= image_tag @tweet.image.to_s ,width: '300px' ,height: '300px' %>
+            </div>
+          </div>
+        <% end %>
+        <div class="update-content">
+          <div class="row">
+            投稿者：<%= @tweet.user.name %>
+            <h4 class ="right">
+              <% if @tweet.user_id == current_user.id %>
+                <%= link_to "投稿を削除する", tweet_path(@tweet.id), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+              <% end %>
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

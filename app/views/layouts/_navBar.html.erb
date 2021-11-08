@@ -10,7 +10,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <%# <%= image_tag current_user.image_name.to_s ,class: "mx-3 p-1 host-icon nav-trigger" %>
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item mx-0 mx-lg-1"><%= link_to "投稿一覧",'/users/index', class:'nav-link py-3 px-0 px-lg-3 rounded' %></li>
+          <li class="nav-item mx-0 mx-lg-1"><%= link_to "投稿一覧",'/tweets/index', class:'nav-link py-3 px-0 px-lg-3 rounded' %></li>
           <li class="nav-item mx-0 mx-lg-1"><%= link_to "アカウント設定", user_path(current_user.id), class:'nav-link py-3 px-0 px-lg-3 rounded' %></li>
           <li class="nav-item mx-0 mx-lg-1"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:'nav-link py-3 px-0 px-lg-3 rounded' %></li>
         </ul>

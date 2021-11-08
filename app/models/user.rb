@@ -11,4 +11,5 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX, message: "を○○@○○.○○の形式で入力して下さい" },
                     length: { maximum: 255 }
   mount_uploader :image_name, ImageUploader
+  has_many :tweets, dependent: :destroy
 end

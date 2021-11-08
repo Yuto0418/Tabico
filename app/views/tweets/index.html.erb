@@ -1,0 +1,29 @@
+<div class="wrap">
+  <header>
+    <h2>投稿一覧</h2>
+  </header>
+  <main>
+    <section>
+      <% @tweets.each do |tweet| %>
+        <div class="tweet">
+          <div class="flex">
+            <%= image_tag tweet.user.image_name.to_s ,class: "own" %>
+            <h4><%= tweet.user.name %></h4>
+            <p class="date"><%= tweet.created_at.to_s(:datetime_jp) %></p>
+          </div>
+          <div class="flex contents">
+            <p class="text"><%= tweet.body %></p>
+            <% if tweet.image.to_s.present? %>
+              <%= image_tag tweet.image.to_s ,width: '240px' ,height: '140px' %>
+            <% end %>
+          </div>
+          <%= link_to "コメントする", tweet ,class: "flex contents" %>
+        </div>
+      <% end %>
+    </section>
+  </main>
+  <%= paginate @tweets %>
+  <%= link_to '/tweets/new', class: 'btn btn-success upload-btn' do %>
+    <i class="fas fa-pencil-alt"></i> 投稿
+  <% end %>
+</div>
