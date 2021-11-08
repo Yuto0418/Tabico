@@ -12,4 +12,5 @@ class User < ApplicationRecord
                     length: { maximum: 255 }
   mount_uploader :image_name, ImageUploader
   has_many :tweets, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end
