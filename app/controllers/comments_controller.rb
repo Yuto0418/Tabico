@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
   def create
     tweet = Tweet.find(params[:tweet_id])
     @comment = tweet.comments.build(comment_params)
