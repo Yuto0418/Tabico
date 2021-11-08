@@ -27,5 +27,41 @@
         </div>
       </div>
     </div>
+    <div class="box3">
+      <div class="box-inner">
+        <%= form_with(model: [@tweet, @comment], local: true) do |f| %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :tweet_id %>
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :comment_text, "コメントを入力" %>
+              <%= f.text_area :comment_text, class: "form-control", autofocus: true %>
+            </div>
+          </div>
+          <div class="update-content">
+            <div class="row">
+              <%= f.submit "投稿", class: "col-md-2 btn btn-primary mx-3" %>
+            </div>
+          </div>
+        <% end %>
+        <% @tweet.comments.each do |comment| %>
+        <div class="tweet">
+          <div class="flex">
+            <%= image_tag comment.user.image_name.to_s ,class: "own" %>
+            <h4><%= comment.user.name %></h4>
+            <p class="date"><%= comment.created_at.to_s(:datetime_jp) %></p>
+          </div>
+          <div class="flex contents">
+            <p class="text"><%= comment.comment_text %></p>
+          </div>
+          <h4 class ="right">
+            <% if comment.user_id == current_user.id %>
+              <%= link_to "コメントを削除する", tweet_comment_path(@tweet, comment), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+            <% end %>
+          </h4>
+        </div>
+      <% end %>
+      </div>
+    </div>
   </div>
 </div>

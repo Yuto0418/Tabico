@@ -1,32 +1,27 @@
 class CommentsController < ApplicationController
-  before_action :set_post
 
   def create
-    @comment = @tweet.comments.create(comment_params)
+    tweet = Tweet.find(params[:tweet_id])
+    @comment = tweet.comments.build(comment_params)
     if @comment.save
-      redirect_to tweet_path(@tweet) notice: 'コメントしました'
+      flash[:notice] = "コメントしました"
+      redirect_to tweet_path(tweet)
     else
-      flash.now[:alert] = 'コメントに失敗しました'
-      render tweet_path(@tweet)
+      render tweet_path(tweet)
     end
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-    if @comment.destroy
-      redirect_to tweet_path(@tweet), notice: 'コメントを削除しました'
-    else
-      flash.now[:alert] = 'コメント削除に失敗しました'
-      render tweet_path(@tweet)
-    end
+    @tweet = Tweet.find(params[:tweet_id])
+    @comment = @tweet.comments.find(params[:id])
+    @comment.destroy
+    flash[:notice] = "コメントを削除しました"
+    redirect_to tweet_path(@tweet)
   end
 
   private
-  def set_tweet
-    @tweet = Tweet.find(params[:tweet_id])
-  end
 
   def comment_params
-    params.required(:comment).permit(:comment_text, :user_id).merge(tweet_id: params[:tweet_id])
+    params.required(:comment).permit(:comment_text, :user_id, :tweet_id)
   end
 end
