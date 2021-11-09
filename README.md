@@ -1,24 +1,35 @@
-# README
+## アプリケーション名
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Tabico
 
-Things you may want to cover:
+---
 
-* Ruby version
+## URL
+https://tabico-20211108074729.herokuapp.com/
 
-* System dependencies
+---
 
-* Configuration
+## アプリケーション概要
+Tabicoは旅人同士が気軽に出会えるコミュニティーアプリケーションです。  具体的には一緒に旅に出かける仲間を募ったり、旅に関する情報などを共有することができます。  情報収集や友達作り思い出共有など、様々な目的に沿って使用することができます。
 
-* Database creation
+---
 
-* Database initialization
+## テスト用アカウント
+メールアドレス： test@gmail.com
 
-* How to run the test suite
+パスワード： password
 
-* Services (job queues, cache servers, search engines, etc.)
+---
 
-* Deployment instructions
+## 利用方法
 
-* ...
+
+新規登録をして、「アカウント設定」にて、自身のプロフィールなどを登録します。
+
+「投稿一覧」でみんなの投稿を見ることができます。
+
+もし気になる投稿があれば、「コメントをする」から投稿詳細ページに飛ぶことができます。
+
+投稿に対するコメントをすることで投稿者とユーザーがコンタクトを取り合うことができます。
+
+投稿に画像など載せることで、みんなと思い出を共有することができます。
