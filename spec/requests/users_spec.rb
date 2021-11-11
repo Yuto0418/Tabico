@@ -32,10 +32,10 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe "GET #show" do
+  describe "GET #edit" do
     it "アカウント設定ページが正常なレスポンスを返すこと" do
       sign_in_as user
-      get user_path(user)
+      get edit_user_path(user)
       expect(response).to be_successful
       expect(response).to have_http_status "200"
     end

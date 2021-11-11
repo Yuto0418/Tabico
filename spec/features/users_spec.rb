@@ -13,7 +13,7 @@ RSpec.feature "Users_feature", type: :feature do
 
     click_button "更新"
 
-    expect(current_path).to eq user_path(user)
+    expect(current_path).to eq edit_user_path(user)
     expect(user.reload.name).to eq "NewName"
   end
 
