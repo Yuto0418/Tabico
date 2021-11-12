@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @tweets = @user.tweets.all
   end
 
   def edit
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "ユーザーIDが「#{@user.name}」の情報を更新しました"
-      redirect_to action: :edit
+      redirect_to action: :show
     else
       flash[:notice] = "情報の更新が失敗しました"
       render :edit

@@ -1,1 +1,77 @@
-マイページ
+<div class="container-2">
+  <div class="row-2">
+    <section class="profile col-sm-12 container-square">
+      <div class="row-2">
+        <div class="col-sm-1 col-xs-2 avatar">
+            <%= image_tag @user.image_name.to_s %>
+        </div>
+        <div class="col-xs-10 profile-name">
+          <h3><%= @user.name %></h3>
+        </div>
+      </div><br>
+      <div class="profile-description">
+        プロフィール :
+      </div><br>
+      <div class="stats">
+        <a href="/families/31/following">
+          <strong id="following" class="stat">
+            <%= @user.tweets.count %>
+          </strong>
+          投稿数
+        </a>
+        <a href="/families/31/followers">
+          <strong id="followers" class="stat">
+            0
+          </strong>
+          フォロワー
+        </a>
+        <a class="decoration-none">
+          <strong class="stat">
+            0
+          </strong>
+          フォロー中
+        </a>
+      </div><br><br>
+      <% if @user.id == current_user.id %>
+        <div class="follow-form">
+          プロフィール編集
+        </div>
+      <% else %>
+        <div class="follow-form">
+          <form action="/relationships" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+            <input type="hidden" name="authenticity_token" value="vergeOWENfC7eSTFmvVONFNfPj6okGrKZA6SrV9wjZB7DvfPzrXw2P7FQq/MKkeKpkiUwiF2nA7J9JO2UvzCgw==">
+            <div><input type="hidden" name="followed_id" id="followed_id" value="31"></div>
+            <input type="submit" name="commit" value="フォロー" class="btn btn-primary" id="follow-btn-31" data-disable-with="フォロー">
+          </form>
+        </div>
+      <% end %>
+    </section>
+  </div>
+  <div class="container-square">
+    <div class="post-wrapper row-2">
+      <main>
+        <section>
+          <% @tweets.each do |tweet| %>
+            <div class="tweet">
+              <div class="flex">
+                <%= image_tag tweet.user.image_name.to_s ,class: "own" %>
+                <h4><%= link_to "#{tweet.user.name}", tweet.user %></h4>
+                <p class="date"><%= tweet.created_at.to_s(:datetime_jp) %></p>
+              </div>
+              <div class="flex contents">
+                <p class="text"><%= tweet.body %></p>
+                <% if tweet.image.to_s.present? %>
+                  <%= image_tag tweet.image.to_s ,width: '240px' ,height: '140px' %>
+                <% end %>
+              </div>
+              <%= link_to "コメントする", tweet ,class: "flex contents" %>
+            </div>
+          <% end %>
+        </section>
+      </main>
+      <%= link_to '/tweets/new', class: 'btn btn-success upload-btn' do %>
+        <i class="fas fa-pencil-alt"></i> 投稿
+      <% end %>
+    </div>
+  </div>
+</div>
