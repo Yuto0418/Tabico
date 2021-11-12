@@ -34,7 +34,7 @@
       </div><br><br>
       <% if @user.id == current_user.id %>
         <div class="follow-form">
-          プロフィール編集
+          <%= link_to "プロフィール編集", edit_user_path(current_user.id), class:'btn-flat-border' %>
         </div>
       <% else %>
         <div class="follow-form">
