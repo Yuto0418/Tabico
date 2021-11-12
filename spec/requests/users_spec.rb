@@ -43,10 +43,11 @@ RSpec.describe "Users", type: :request do
 
   describe "#update" do
     it "ユーザーを更新できること" do
-      user_params = FactoryBot.attributes_for(:user, name: "NewName")
+      user_params = FactoryBot.attributes_for(:user, name: "NewName", description: "NewDescription")
       sign_in_as user
       patch user_path(user), params: { id: user.id, user: user_params }
       expect(user.reload.name).to eq "NewName"
+      expect(user.reload.description).to eq "NewDescription"
     end
   end
 end
