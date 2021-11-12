@@ -10,11 +10,11 @@
         </div>
       </div><br>
       <div class="profile-description">
-        プロフィール :
+        <%= @user.description %>
       </div><br>
       <div class="stats">
-        <a href="/families/31/following">
-          <strong id="following" class="stat">
+        <a class="decoration-none">
+          <strong class="stat">
             <%= @user.tweets.count %>
           </strong>
           投稿数
@@ -25,8 +25,8 @@
           </strong>
           フォロワー
         </a>
-        <a class="decoration-none">
-          <strong class="stat">
+        <a href="/families/31/following">
+          <strong id="following" class="stat">
             0
           </strong>
           フォロー中
@@ -41,7 +41,7 @@
           <form action="/relationships" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
             <input type="hidden" name="authenticity_token" value="vergeOWENfC7eSTFmvVONFNfPj6okGrKZA6SrV9wjZB7DvfPzrXw2P7FQq/MKkeKpkiUwiF2nA7J9JO2UvzCgw==">
             <div><input type="hidden" name="followed_id" id="followed_id" value="31"></div>
-            <input type="submit" name="commit" value="フォロー" class="btn btn-primary" id="follow-btn-31" data-disable-with="フォロー">
+            <input type="submit" name="commit" value="フォローする" class="btn-flat-border" id="follow-btn-31" data-disable-with="フォロー">
           </form>
         </div>
       <% end %>
