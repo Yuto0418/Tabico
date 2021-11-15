@@ -47,33 +47,38 @@
       <% end %>
     </section>
   </div>
+  <% if @tweets.length > 0 %>
   <div class="container-square">
     <div class="post-wrapper row-2">
-      <main>
-        <section>
-          <% @tweets.each do |tweet| %>
-            <div class="tweet">
-              <div class="flex">
-                <%= image_tag tweet.user.image_name.to_s ,class: "own" %>
-                <h4><%= link_to "#{tweet.user.name}", tweet.user %></h4>
-                <p class="date"><%= tweet.created_at.to_s(:datetime_jp) %></p>
-              </div>
-              <div class="flex contents">
-                <p class="text"><%= tweet.body %></p>
-                <% if tweet.image.to_s.present? %>
-                  <%= image_tag tweet.image.to_s ,width: '240px' ,height: '140px' %>
-                <% end %>
-              </div>
-              <% if user_signed_in? && @user.id != current_user.id %>
-                <%= link_to "コメントする", tweet ,class: "flex contents" %>
+      <section>
+        <% @tweets.each do |tweet| %>
+          <div class="tweet">
+            <div class="flex">
+              <%= image_tag tweet.user.image_name.to_s ,class: "own" %>
+              <h4><%= link_to "#{tweet.user.name}", tweet.user %></h4>
+              <p class="date"><%= tweet.created_at.to_s(:datetime_jp) %></p>
+            </div>
+            <div class="flex contents">
+              <p class="text"><%= tweet.body %></p>
+              <% if tweet.image.to_s.present? %>
+                <%= image_tag tweet.image.to_s ,width: '240px' ,height: '140px' %>
               <% end %>
             </div>
-          <% end %>
-        </section>
-      </main>
-      <%= link_to '/tweets/new', class: 'btn btn-success upload-btn' do %>
-        <i class="fas fa-pencil-alt"></i> 投稿
-      <% end %>
+            <% if user_signed_in? && @user.id != current_user.id %>
+              <%= link_to "コメントする", tweet ,class: "flex contents" %>
+            <% else %>
+              <%= link_to "コメントを見る", tweet %> |
+              <%= link_to "投稿を削除する", tweet_path(tweet.id), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+            <% end %>
+          </div>
+        <% end %>
+      </section>
     </div>
   </div>
+  <% else %>
+    <div class="mypage-space"></div>
+    <%= link_to '/tweets/new', class: 'btn btn-success upload-btn' do %>
+      <i class="fas fa-pencil-alt"></i> 投稿
+    <% end %>
+  <% end %>
 </div>
