@@ -32,7 +32,7 @@
           フォロー中
         </a>
       </div><br><br>
-      <% if @user.id == current_user.id %>
+      <% if user_signed_in? && @user.id == current_user.id %>
         <div class="follow-form">
           <%= link_to "プロフィール編集", edit_user_path(current_user.id), class:'btn-flat-border' %>
         </div>
@@ -64,7 +64,9 @@
                   <%= image_tag tweet.image.to_s ,width: '240px' ,height: '140px' %>
                 <% end %>
               </div>
-              <%= link_to "コメントする", tweet ,class: "flex contents" %>
+              <% if user_signed_in? && @user.id != current_user.id %>
+                <%= link_to "コメントする", tweet ,class: "flex contents" %>
+              <% end %>
             </div>
           <% end %>
         </section>

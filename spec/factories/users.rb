@@ -5,5 +5,6 @@ FactoryBot.define do
     password = 'test1234'
     password { password }
     password_confirmation { password }
+    description { 'テスト用' }
   end
 end
