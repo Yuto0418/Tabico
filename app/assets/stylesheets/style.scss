@@ -236,7 +236,7 @@ sup {
 
 a {
   color: #1abc9c;
-  text-decoration: underline;
+  text-decoration: none;
 }
 a:hover {
   color: #15967d;
@@ -11791,4 +11791,98 @@ textarea.form-control {
 
 .right {
   padding-left: 380px;
+}
+
+.container-2 {
+  width: 80%;
+  margin: 0 auto;
+  padding: 0;
+}
+.row-2 {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.container-square {
+  border-radius: 15px;
+  padding: 60px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  background: #f3f3f3;
+}
+#registration-day {
+  color: darkgray;
+}
+.profile-edit-link {
+  float: right;
+}
+.avatar {
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: solid #f3f3f3 1px;
+}
+.profile-name {
+  height: 40px;
+  margin-top: 5px;
+}
+.profile-name h3 {
+  text-align: center;
+}
+.profile-description {
+  text-align: center;
+}
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 17em;
+}
+.stats a:first-child {
+  padding-left: 0;
+  border: 0;
+}
+.stats p, .stats a {
+  float: left;
+  padding: 0 10px;
+  border-left: 1px solid #eeeeee;
+  color: gray;
+}
+.stats strong {
+  display: block;
+}
+strong {
+  font-weight: bold;
+}
+.decoration-none {
+  pointer-events: none;
+}
+.follow-form {
+  text-align:center;
+  margin: 0 auto;
+}
+.btn-flat-border {
+  display: inline-block;
+  padding: 0.3em 2em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+  margin-top: 10px;
+}
+
+.btn-flat-border:hover {
+  background: #67c5ff;
+  color: white;
+}
+.mypage-space {
+  margin-top: 100px;
 }
