@@ -11837,11 +11837,13 @@ textarea.form-control {
   text-align: center;
 }
 .stats {
-  float: right;
   overflow: auto;
   margin-top: 0;
-  margin-right: 230px;
   padding: 0;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 17em;
 }
 .stats a:first-child {
   padding-left: 0;
@@ -11863,8 +11865,8 @@ strong {
   pointer-events: none;
 }
 .follow-form {
-  float: right;
-  margin-right: 280px;
+  text-align:center;
+  margin: 0 auto;
 }
 .btn-flat-border {
   display: inline-block;
