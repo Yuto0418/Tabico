@@ -7,6 +7,14 @@ class UsersController < ApplicationController
     @tweets = @user.tweets.all.order(created_at: :desc)
   end
 
+  def followings
+    @user = User.find(params[:id])
+  end
+
+  def followers
+    @user = User.find(params[:id])
+  end
+
   def edit
     @user = User.find(params[:id])
   end

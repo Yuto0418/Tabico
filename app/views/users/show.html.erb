@@ -1,3 +1,4 @@
+<% provide(:title, 'マイページ') %>
 <div class="container-2">
   <div class="row-2">
     <section class="profile col-sm-12 container-square">
@@ -19,18 +20,18 @@
           </strong>
           投稿数
         </a>
-        <a href="/families/31/followers">
+        <%= link_to followers_user_path(@user.id) do %>
           <strong id="followers" class="stat">
-            0
+            <%= @user.followers.count %>
           </strong>
           フォロワー
-        </a>
-        <a href="/families/31/following">
+        <% end %>
+        <%= link_to followings_user_path(@user.id) do %>
           <strong id="following" class="stat">
-            0
+            <%= @user.followings.count %>
           </strong>
-          フォロー中
-        </a>
+          フォロー
+        <% end %>
       </div><br><br>
       <% if user_signed_in? && @user.id == current_user.id %>
         <div class="follow-form">

@@ -1,0 +1,47 @@
+<% provide(:title, 'フォロワー一覧') %>
+<div class="container-2">
+  <div class="row-2">
+    <section class="profile col-sm-12 container-square">
+      <div class="row-2">
+        <div class="col-sm-1 col-xs-2 avatar">
+            <%= image_tag @user.image_name.to_s %>
+        </div>
+        <div class="col-xs-10 profile-name">
+          <h3><%= @user.name %></h3>
+        </div>
+      </div><br>
+      <div class="profile-description">
+        <%= @user.description %>
+      </div><br>
+      <div class="stats">
+        <a class="decoration-none">
+          <strong class="stat">
+            <%= @user.tweets.count %>
+          </strong>
+          投稿数
+        </a>
+        <%= link_to followers_user_path(@user.id) do %>
+          <strong id="followers" class="stat">
+            <%= @user.followers.count %>
+          </strong>
+          フォロワー
+        <% end %>
+        <%= link_to followings_user_path(@user.id) do %>
+          <strong id="following" class="stat">
+            <%= @user.followings.count %>
+          </strong>
+          フォロー
+        <% end %>
+      </div><br><br>
+      <% if user_signed_in? && @user.id == current_user.id %>
+        <div class="follow-form">
+          <%= link_to "プロフィール編集", edit_user_path(current_user.id), class:'btn-flat-border' %>
+        </div>
+      <% else %>
+        <div class="follow-form">
+          <%= render 'relationships/follow_button', user: @user %>
+        </div>
+      <% end %>
+    </section>
+  </div>
+</div>
