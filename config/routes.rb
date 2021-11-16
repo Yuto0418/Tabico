@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     member do
       get :followings, :followers
     end
+    collection do
+      get 'search'
+    end
   end
   resources :tweets do
     resources :comments, only: [:create, :destroy]

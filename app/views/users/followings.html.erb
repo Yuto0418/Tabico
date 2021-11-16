@@ -48,6 +48,12 @@
   <div class="container-square-2">
   <h3 class="follow-title">フォロー一覧</h3>
     <div class="post-wrapper row-2">
+      <%= search_form_for @q, url: search_users_path do |f| %>
+        <%= f.label :name_cont, 'ユーザー検索' %>
+        <%= f.search_field :name_cont, class:'form-control mb-4',placeholder: 'sample' %>
+        <br>
+        <%= f.submit '検索',class:'form-control-2 btn-primary mb-4' %>
+      <% end %>
       <section>
         <% @user.followings.each do |user| %>
           <div class="tweet">

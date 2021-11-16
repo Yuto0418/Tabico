@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :set_q
+
+
   def index
   end
 
@@ -32,7 +35,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    @results = @q.result
+    @count = @results.count
+  end
+
   private
+
+  def set_q
+    @q = User.ransack(params[:q])
+  end
 
   def user_params
     params.require(:user).permit(:image_name, :name, :description)
