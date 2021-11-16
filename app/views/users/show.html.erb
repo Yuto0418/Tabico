@@ -38,11 +38,7 @@
         </div>
       <% else %>
         <div class="follow-form">
-          <form action="/relationships" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
-            <input type="hidden" name="authenticity_token" value="vergeOWENfC7eSTFmvVONFNfPj6okGrKZA6SrV9wjZB7DvfPzrXw2P7FQq/MKkeKpkiUwiF2nA7J9JO2UvzCgw==">
-            <div><input type="hidden" name="followed_id" id="followed_id" value="31"></div>
-            <input type="submit" name="commit" value="フォローする" class="btn-flat-border" id="follow-btn-31" data-disable-with="フォロー">
-          </form>
+          <%= render 'relationships/follow_button', user: @user %>
         </div>
       <% end %>
     </section>
