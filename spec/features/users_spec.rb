@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "Users_feature", type: :feature do
   let!(:user) { FactoryBot.create(:user) }
   let!(:tweet) { FactoryBot.create(:tweet, user: user) }
-  let(:other_user) { FactoryBot.create(:other_user) }
+  let(:other_user) { FactoryBot.create(:user) }
 
   scenario "ユーザーの更新に成功する" do
     valid_login(user)
