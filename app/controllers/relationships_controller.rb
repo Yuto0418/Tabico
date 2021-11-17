@@ -1,5 +1,6 @@
 class RelationshipsController < ApplicationController
   before_action :set_user
+  before_action :authenticate_user!, except: [:index]
 
   def create
     user = User.find(params[:relationship][:follow_id])
@@ -28,6 +29,6 @@ class RelationshipsController < ApplicationController
   private
 
   def set_user
-    user = User.find(params[:relationship][:follow_id])
+    @user = User.find(params[:relationship][:follow_id])
   end
 end

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_q
-
+  before_action :authenticate_user!, except: [:index]
 
   def index
   end
