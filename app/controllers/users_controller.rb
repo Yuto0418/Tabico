@@ -1,10 +1,23 @@
 class UsersController < ApplicationController
+  before_action :set_q
+  before_action :authenticate_user!, except: [:index]
+
   def index
   end
 
   def show
     @user = User.find(params[:id])
-    @tweets = @user.tweets.all
+    @tweets = @user.tweets.all.order(created_at: :desc)
+  end
+
+  def followings
+    @user = User.find(params[:id])
+    @users = @user.followings
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.followers
   end
 
   def edit
@@ -22,7 +35,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    @results = @q.result
+    @count = @results.count
+  end
+
   private
+
+  def set_q
+    @q = User.ransack(params[:q])
+  end
 
   def user_params
     params.require(:user).permit(:image_name, :name, :description)

@@ -25,7 +25,7 @@ RSpec.describe "Users", type: :request do
     end
 
     it "テスト用ユーザーとしてログインし、正常なレスポンスを返すこと" do
-      sign_in_as user
+      sign_in user
       get root_path
       expect(response).to be_successful
       expect(response).to have_http_status "200"
@@ -34,14 +34,14 @@ RSpec.describe "Users", type: :request do
 
   describe "GET #show" do
     it "マイページが正常なレスポンスを返すこと" do
-      sign_in_as user
+      sign_in user
       get user_path(user)
       expect(response).to be_successful
       expect(response).to have_http_status "200"
     end
 
     it "マイページのレスポンスに名前と紹介文が含まれること" do
-      sign_in_as user
+      sign_in user
       get user_path(user)
       expect(response.body).to include user.name
       expect(response.body).to include user.description
@@ -50,7 +50,7 @@ RSpec.describe "Users", type: :request do
 
   describe "GET #edit" do
     it "アカウント設定ページが正常なレスポンスを返すこと" do
-      sign_in_as user
+      sign_in user
       get edit_user_path(user)
       expect(response).to be_successful
       expect(response).to have_http_status "200"
@@ -59,11 +59,38 @@ RSpec.describe "Users", type: :request do
 
   describe "#update" do
     it "ユーザーを更新できること" do
+      sign_in user
       user_params = FactoryBot.attributes_for(:user, name: "NewName", description: "NewDescription")
-      sign_in_as user
       patch user_path(user), params: { id: user.id, user: user_params }
       expect(user.reload.name).to eq "NewName"
       expect(user.reload.description).to eq "NewDescription"
+    end
+  end
+
+  describe "GET #followes" do
+    it "フォロワー一覧ページが正常なレスポンスを返すこと" do
+      sign_in user
+      get followers_user_path(user)
+      expect(response).to be_successful
+      expect(response).to have_http_status "200"
+    end
+  end
+
+  describe "GET #followings" do
+    it "フォロー一覧ページが正常なレスポンスを返すこと" do
+      sign_in user
+      get followings_user_path(user)
+      expect(response).to be_successful
+      expect(response).to have_http_status "200"
+    end
+  end
+
+  describe "GET #search" do
+    it "検索結果ページが正常なレスポンスを返すこと" do
+      sign_in user
+      get search_users_path
+      expect(response).to be_successful
+      expect(response).to have_http_status "200"
     end
   end
 end

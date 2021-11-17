@@ -1,4 +1,4 @@
-<% provide(:title, 'マイページ') %>
+<% provide(:title, 'フォロー一覧') %>
 <div class="container-2">
   <div class="row-2">
     <section class="profile col-sm-12 container-square">
@@ -44,44 +44,44 @@
       <% end %>
     </section>
   </div>
-  <% if @tweets.length > 0 %>
+  <% if @user.followings.count > 0 %>
   <div class="container-square-2">
-  <h3 class="follow-title">投稿一覧</h3>
+  <h3 class="follow-title">フォロー一覧</h3>
     <div class="post-wrapper row-2">
+      <%= search_form_for @q, url: search_users_path do |f| %>
+        <%= f.label :name_cont, 'ユーザー検索' %>
+        <%= f.search_field :name_cont, class:'form-control mb-4',placeholder: 'sample' %>
+        <br>
+        <%= f.submit '検索',class:'form-control-2 btn-primary mb-4' %>
+      <% end %>
       <section>
-        <% @tweets.each do |tweet| %>
+        <% @user.followings.each do |user| %>
           <div class="tweet">
             <div class="flex">
-              <%= image_tag tweet.user.image_name.to_s ,class: "own" %>
-              <h4><%= link_to "#{tweet.user.name}", tweet.user %></h4>
-              <p class="date"><%= tweet.created_at.to_s(:datetime_jp) %></p>
-            </div>
-            <div class="flex contents">
-              <p class="text"><%= tweet.body %></p>
-              <% if tweet.image.to_s.present? %>
-                <%= image_tag tweet.image.to_s ,width: '240px' ,height: '140px' %>
+              <%= image_tag user.image_name.to_s ,class: "own" %>
+              <h3 class="user-name"><%= link_to "#{user.name}", user %></h3>
+              <% if user_signed_in? && user.id != current_user.id %>
+                <% if current_user.following?(user) %>
+                  <%= form_for(current_user.relationships.find_by(follow_id: user.id), html: { method: :delete }) do |f| %>
+                    <%= f.hidden_field :follow_id, value: user.id %>
+                    <%= f.submit 'フォロー中', class: 'btn-flat-border' %>
+                  <% end %>
+                <% else %>
+                  <%= form_for(current_user.relationships.build) do |f| %>
+                    <%= f.hidden_field :follow_id, value: user.id %>
+                    <%= f.submit 'フォロー', class: 'btn-flat-border' %>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <h4 class="user-name">マイアカウント</h4>
               <% end %>
             </div>
-            <% if user_signed_in? && @user.id != current_user.id %>
-              <p class="text-2"><%= link_to "コメントする", tweet ,class: "flex contents" %></p>
-            <% else %>
-            <div class="flex contents">
-              <p class="text-2"><%= link_to "コメントを見る", tweet %>・
-              <%= link_to "投稿を削除する", tweet_path(tweet.id), method: :delete, data: { confirm: "本当に削除しますか？" } %></p>
-            </div>
-            <% end %>
           </div>
         <% end %>
       </section>
-      <%= link_to '/tweets/new', class: 'btn btn-success upload-btn' do %>
-        <i class="fas fa-pencil-alt"></i> 投稿
-      <% end %>
     </div>
   </div>
   <% else %>
     <div class="mypage-space"></div>
-    <%= link_to '/tweets/new', class: 'btn btn-success upload-btn' do %>
-      <i class="fas fa-pencil-alt"></i> 投稿
-    <% end %>
   <% end %>
 </div>
