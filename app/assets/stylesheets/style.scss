@@ -1966,7 +1966,7 @@ progress {
   --bs-table-hover-color: #212529;
   --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 5rem;
   color: #212529;
   vertical-align: top;
   border-color: #dee2e6;
@@ -11936,82 +11936,26 @@ h4.user-name {
   text-align:center;
   margin-bottom: 40px;
 }
-.balloon1-left {
-  position: relative;
-  display: inline-block;
-  margin: 1.5em 0 1.5em 15px;
-  padding: 7px 10px;
-  min-width: 120px;
-  max-width: 100%;
-  color: #555;
-  font-size: 16px;
-  background: #e0edff;
-  border-radius: 10px;
+.text-name {
+  text-align: center;
+  margin: 20px auto 0px auto;
+  max-width: 450px;
+  background-color: #DDDDDD;
 }
-.balloon1-left:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -30px;
-  margin-top: -15px;
-  border: 15px solid transparent;
-  border-right: 15px solid #e0edff;
-}
-.balloon1-left h6 {
+.current_user {
   margin: 0;
-  padding: 0;
-}
-.balloon5 {
-  width: 100%;
-  margin: 1.5em 0;
-  overflow: hidden;
-}
-.balloon5 .faceicon {
-  float: left;
-  margin-right: -90px;
-  width: 80px;
-}
-.balloon5 .faceicon img{
-  width: 100%;
-  height: auto;
-  border: solid 3px #d7ebfe;
-  border-radius: 50%;
-}
-.balloon5 .chatting {
-  width: 100%;
-}
-.says {
-  display: inline-block;
-  position: relative;
-  margin: 5px 0 0 105px;
-  padding: 17px 13px;
-  border-radius: 12px;
-  background: #d7ebfe;
-}
-.says:after {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  top: 18px;
-  left: -24px;
-  border: 12px solid transparent;
-  border-right: 12px solid #d7ebfe;
-}
-.says p {
-  margin: 0;
-  padding: 0;
 }
 .line-bc {
   padding: 20px 10px;
   max-width: 450px;
-  margin: 15px auto;
+  max-height: 600px;
+  margin: 0px auto;
   text-align: right;
   font-size: 14px;
   background: #7da4cd;
-
+  overflow: scroll;
 }
 
-/*以下、②左側のコメント*/
 .balloon6 {
   width: 100%;
   margin: 10px 0;
@@ -12037,10 +11981,12 @@ h4.user-name {
   display: inline-block;
   position: relative;
   margin: 0 0 0 50px;
-  padding: 10px;
+  padding: 8px;
   max-width: 250px;
   border-radius: 12px;
   background: #edf1ee;
+  font-size: 15px;
+  line-height: 0.5;
 }
 
 .says:after {
@@ -12054,7 +12000,66 @@ h4.user-name {
   -webkit-transform: rotate(35deg);
   transform: rotate(35deg);
 }
-.says p {
+.says h6 {
   margin: 0;
   padding: 0;
+}
+.mycomment {
+  margin: 10px 0;
+}
+.mycomment p {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #30e852;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.mycomment p:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #30e852;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}
+.message-time {
+  color: #C0C0C0;
+  margin: 0 0 0 50px;
+}
+.message-area-text {
+  width: 80%;
+  max-width: 450px;
+  margin-bottom: 20px;
+  word-wrap: break-word;
+  height: auto;
+}
+
+.btn-2 {
+  display       : inline-block;
+  border-radius : 5%;
+  font-size     : 15pt;
+  text-align    : center;
+  cursor        : pointer;
+  padding       : 12px 12px;
+  background    : #66ff66;
+  color         : #ffffff;
+  line-height   : 1em;
+  opacity       : 1;
+  transition    : .3s;
+}
+.btn-2:hover {
+  opacity       : 0.8;
+}
+.message-title {
+  text-align: center;
+  margin: 20px auto;
 }
