@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :message do
-    user { nil }
-    room { nil }
+    user
+    room
     message { "MyText" }
   end
 end
