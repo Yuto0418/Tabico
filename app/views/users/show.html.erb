@@ -42,8 +42,8 @@
         <div class="follow-form">
           <%= render 'relationships/follow_button', user: @user %>
           <% if (current_user.following? @user) && (@user.following? current_user) %>
-          <% if @isRoom == true %>
-            <p><%= link_to "DMを送る", room_path(@roomId), class:'btn-flat-border' %>
+          <% if @is_room == true %>
+            <p><%= link_to "DMを送る", room_path(@room_id), class:'btn-flat-border' %>
           <% else %>
             <%= form_for @room do |f| %>
               <%= fields_for @entry do |e| %>
