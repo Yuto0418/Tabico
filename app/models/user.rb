@@ -19,6 +19,9 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
 
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+
   def follow(other_user)
     unless self == other_user
       relationships.find_or_create_by(follow_id: other_user.id)
@@ -38,8 +41,6 @@ class User < ApplicationRecord
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.name = "ゲストユーザー"
       user.password = SecureRandom.urlsafe_base64
-      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
-      # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
     end
   end
 end

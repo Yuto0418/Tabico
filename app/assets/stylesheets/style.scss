@@ -1966,7 +1966,7 @@ progress {
   --bs-table-hover-color: #212529;
   --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 5rem;
   color: #212529;
   vertical-align: top;
   border-color: #dee2e6;
@@ -11930,4 +11930,137 @@ h4.user-name {
           appearance: none;
   border-radius: 0.5rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+#send-form{
+  text-align:center;
+  margin-bottom: 40px;
+}
+.text-name {
+  text-align: center;
+  margin: 20px auto 0px auto;
+  max-width: 450px;
+  background-color: #DDDDDD;
+}
+.current_user {
+  margin: 0;
+}
+.line-bc {
+  padding: 20px 10px;
+  max-width: 450px;
+  max-height: 600px;
+  margin: 0px auto;
+  text-align: right;
+  font-size: 14px;
+  background: #7da4cd;
+  overflow: scroll;
+  height: 600px;
+}
+
+.balloon6 {
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.balloon6 .faceicon {
+  float: left;
+  margin-right: -50px;
+  width: 40px;
+}
+
+.balloon6 .faceicon img{
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+.balloon6 .chatting {
+  width: 100%;
+  text-align: left;
+}
+.says {
+  display: inline-block;
+  position: relative;
+  margin: 0 0 0 50px;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #edf1ee;
+  font-size: 15px;
+  line-height: 0.5;
+}
+
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+.says h6 {
+  margin: 0;
+  padding: 0;
+}
+.mycomment {
+  margin: 10px 0;
+}
+.mycomment p {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #30e852;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.mycomment p:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #30e852;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}
+.message-time {
+  color: #C0C0C0;
+  margin: 0 0 0 50px;
+}
+.message-area-text {
+  width: 80%;
+  max-width: 450px;
+  margin-bottom: 20px;
+  word-wrap: break-word;
+  height: auto;
+}
+
+.btn-2 {
+  display       : inline-block;
+  border-radius : 5%;
+  font-size     : 15pt;
+  text-align    : center;
+  cursor        : pointer;
+  padding       : 12px 12px;
+  background    : #66ff66;
+  color         : #ffffff;
+  line-height   : 1em;
+  opacity       : 1;
+  transition    : .3s;
+}
+.btn-2:hover {
+  opacity       : 0.8;
+}
+.message-title {
+  text-align: center;
+  margin: 20px auto;
 }

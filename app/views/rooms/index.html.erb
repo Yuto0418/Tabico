@@ -1,0 +1,22 @@
+<div class="container-square-2">
+  <h2 class="message-title">DM一覧</h2>
+  <% @another_entries.each do |e| %>
+    <table class="table table-striped">
+      <tr>
+        <td>
+          <%= link_to room_path(e.room.id) do %>
+            <%= image_tag e.user.image_name.to_s, format: 'jpeg', class: "rounded-circle", fallback: "no_image.jpg", size: "30x30" %>
+            <%= e.user.name %>
+          <% end %>
+        </td>
+        <td>
+          <% dm = Message.find_by(id: e.room.message_ids.last).message %>
+          <%= truncate(dm, length: 10) %>
+        </td>
+        <td>
+          <h6 style="color: #C0C0C0;"><%= e.updated_at.strftime("%Y/%m/%d %H:%M") %></h6>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>

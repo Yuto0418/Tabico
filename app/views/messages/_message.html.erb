@@ -1,0 +1,17 @@
+<div class="line-bc">
+  <div class="balloon6">
+    <div class="faceicon">
+      <%= image_tag message.user.image_name.to_s, fallback: "no_image.jpg" %>
+    </div>
+    <p class="<%= message.id %>">
+      <div class="chatting">
+        <div class="says">
+          <div class="balloon1-left">
+            <h6><%= message.message %></h6><br>
+          </div>
+        </div>
+        <h6 style="color: #C0C0C0;"><%= message.created_at.strftime("%Y/%m/%d %H:%M") %></h6>
+      </div>
+    </p>
+  </div>
+</div>
