@@ -1,4 +1,4 @@
-<% provide(:title, 'フォロワー一覧') %>
+<% provide(:title, '検索フォロー・フォロワー一覧') %>
 <div class="container-square-2">
   <h3 class="follow-title">検索結果：<%= @count %>件</h3>
   <div class="post-wrapper row-2">
@@ -33,5 +33,6 @@
         </div>
       <% end %>
     </section>
+    <%= paginate @results %>
   </div>
 </div>

@@ -1,4 +1,6 @@
 class TweetsController < ApplicationController
+  before_action :set_q
+
   def index
     @tweets = Tweet.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
   end
@@ -31,7 +33,15 @@ class TweetsController < ApplicationController
     redirect_to :tweets
   end
 
+  def search
+    @results = @q.result.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+    @count = @results.count
+  end
+
   private
+  def set_q
+    @q = Tweet.ransack(params[:q])
+  end
 
   def tweet_params
     params.require(:tweet).permit(:body, :image, :user_id)
