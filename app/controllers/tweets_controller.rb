@@ -39,6 +39,7 @@ class TweetsController < ApplicationController
   end
 
   private
+
   def set_q
     @q = Tweet.ransack(params[:q])
   end
