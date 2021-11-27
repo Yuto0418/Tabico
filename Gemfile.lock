@@ -1500,6 +1500,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   aws-sdk (~> 3.0)
+  aws-sdk-s3
   bootsnap (>= 1.4.4)
   bootstrap-will_paginate
   byebug
