@@ -45,4 +45,20 @@ RSpec.feature "Tweets_feature", type: :feature do
 
     expect(page).to have_content "投稿を削除しました"
   end
+
+  scenario "投稿一覧のフリーワード検索に成功する" do
+    valid_login(user)
+    expect(current_path).to eq root_path
+
+    click_link "投稿一覧"
+
+    expect(current_path).to eq "/tweets/index"
+
+    fill_in "フリーワード検索", with: "MyString"
+
+    click_button "検索"
+
+    expect(current_path).to eq search_tweets_path
+    expect(page).to have_content "MyString"
+  end
 end

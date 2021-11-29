@@ -1,3 +1,4 @@
+<% provide(:title, 'メッセージルーム') %>
 <% @entries.each do |e| %>
   <% current_user == e.user ? @class = "current_user" : @class = ""  %>
   <% if e.user != current_user %>

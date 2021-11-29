@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    @results = @q.result
+    @results = @q.result.paginate(page: params[:page], per_page: 5)
     @count = @results.count
   end
 

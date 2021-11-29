@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   end
   resources :tweets do
     resources :comments, only: [:create, :destroy]
+    collection do
+      get 'search'
+    end
   end
   resources :relationships, only: [:create, :destroy]
   resources :messages, only: [:create]

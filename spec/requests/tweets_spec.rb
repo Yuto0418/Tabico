@@ -46,4 +46,12 @@ RSpec.describe "Tweets", type: :request do
       expect(response.body).to include tweet[0].body
     end
   end
+
+  describe "GET #search" do
+    it "検索結果ページが正常なレスポンスを返すこと" do
+      get search_tweets_path
+      expect(response).to be_successful
+      expect(response).to have_http_status "200"
+    end
+  end
 end
