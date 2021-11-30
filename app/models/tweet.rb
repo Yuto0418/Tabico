@@ -4,4 +4,5 @@ class Tweet < ApplicationRecord
   mount_uploader :image, ImageUploader
   validates :user_id, presence: true
   validates :body, presence: true
+  has_one_attached :image
 end
