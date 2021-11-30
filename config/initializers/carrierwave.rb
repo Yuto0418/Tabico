@@ -12,5 +12,5 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1',
   }
   config.cache_storage = :fog
-  config.fog_directory  = 'ENV['tabico']'
+  config.fog_directory  = 'tabico'
 end
