@@ -1315,6 +1315,7 @@ GEM
     parallel (1.21.0)
     parser (3.0.2.0)
       ast (~> 2.4.1)
+    pg (1.2.3)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -1515,6 +1516,7 @@ DEPENDENCIES
   kaminari
   listen (>= 3.0.5, < 4.0)
   mysql2 (~> 0.5)
+  pg
   pry-byebug
   pry-doc
   pry-rails
