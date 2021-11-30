@@ -13,4 +13,5 @@ CarrierWave.configure do |config|
   }
   config.cache_storage = :fog
   config.fog_directory  = 'tabico'
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/tabico'
 end
